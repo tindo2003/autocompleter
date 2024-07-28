@@ -1,6 +1,6 @@
- /* trienode.h contains structure and function declarations for 
-   a trie implementation 
-   CSE374, HW5, 22Wi 
+/* trienode.h contains structure and function declarations for 
+  a trie implementation 
+  CSE374, HW5, 22Wi 
 */
 
 #ifndef TRIENODE_H_

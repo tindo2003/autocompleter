@@ -1,1 +1,1 @@
-this is an implementation of an autocompler using Trie
+this is an implementation of an autocompler using trie

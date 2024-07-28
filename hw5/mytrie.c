@@ -137,3 +137,21 @@ bool triesearch(trienode* root, char* signedtext) {
   }
   return tmp->terminal;
 }
+
+void freetree(trienode* cur_node) {
+  if (cur_node == NULL) return; 
+
+  for (int i = 0; i < NUM_CHARS; i++) {
+    trienode* child_node = (cur_node)->children[i];
+    freetree(child_node);
+  }
+  free(cur_node);
+}
+
+bool is_trie_empty(trienode* root) {
+  if (root == NULL) return true;
+  for (int i = 0; i < NUM_CHARS; i++) {
+      if (root->children[i] != NULL) return false;
+  }
+  return !root->terminal;
+}

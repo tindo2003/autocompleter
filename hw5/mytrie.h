@@ -18,7 +18,9 @@ struct trienode {
 trienode* createnode();
 bool trieinsert(trienode** root, char* str);
 bool deletestr(trienode** root, char* str);
+void freetree(trienode* root);
 bool triesearch(trienode* root, char* str);
+bool is_trie_empty(trienode* root);
 
 
 #endif 

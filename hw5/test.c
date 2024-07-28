@@ -51,6 +51,36 @@ void run_tests() {
     assert(deletestr(&root, "supercalifragilisticexpialidocious") == true);
     assert(triesearch(root, "supercalifragilisticexpialidocious") == false);
 
+    // Test 9: Free an empty trie
+    trienode* empty_root = NULL;
+    freetree(empty_root);
+    assert(is_trie_empty(empty_root));
+
+    // Test 10: Free a trie with one word
+    trienode* single_word_root = NULL;
+    assert(trieinsert(&single_word_root, "hello") == true);
+    freetree(single_word_root);
+    single_word_root = NULL;
+    assert(is_trie_empty(single_word_root));
+
+    // Test 11: Free a trie with multiple words
+    trienode* multi_word_root = NULL;
+    assert(trieinsert(&multi_word_root, "hello") == true);
+    assert(trieinsert(&multi_word_root, "world") == true);
+    assert(trieinsert(&multi_word_root, "hi") == true);
+    freetree(multi_word_root);
+    multi_word_root = NULL;
+    assert(is_trie_empty(multi_word_root));
+
+    // Test 12: Free a trie, then try to use it (should not crash)
+    trienode* freed_root = NULL;
+    assert(trieinsert(&freed_root, "test") == true);
+    freetree(freed_root);
+    freed_root = NULL;
+    assert(triesearch(freed_root, "test") == false);
+    assert(deletestr(&freed_root, "test") == false);
+    assert(trieinsert(&freed_root, "new") == true);
+
     printf("All tests passed successfully!\n");
 }
 
